@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://giigtn73do0l"]
+
+[ext_resource type="Texture2D" uid="uid://be4syflwp88p3" path="res://assets/sprites/characters/enemies/Spritesheet_without_Shadows.png" id="1_8lier"]
+[ext_resource type="Script" uid="uid://be3c40kioro4o" path="res://scenes/entities/monsters/enemy_vangard/enemy_vangard.gd" id="1_fpmbw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia5mc"]
+atlas = ExtResource("1_8lier")
+region = Rect2(0, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmw4o"]
+atlas = ExtResource("1_8lier")
+region = Rect2(48, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_750ka"]
+atlas = ExtResource("1_8lier")
+region = Rect2(96, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bnq"]
+atlas = ExtResource("1_8lier")
+region = Rect2(144, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oervh"]
+atlas = ExtResource("1_8lier")
+region = Rect2(192, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2pi0"]
+atlas = ExtResource("1_8lier")
+region = Rect2(240, 768, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf1ha"]
+atlas = ExtResource("1_8lier")
+region = Rect2(0, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iesmy"]
+atlas = ExtResource("1_8lier")
+region = Rect2(48, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhpae"]
+atlas = ExtResource("1_8lier")
+region = Rect2(96, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxcun"]
+atlas = ExtResource("1_8lier")
+region = Rect2(96, 576, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdlap"]
+atlas = ExtResource("1_8lier")
+region = Rect2(144, 576, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gotmt"]
+atlas = ExtResource("1_8lier")
+region = Rect2(192, 576, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am4oy"]
+atlas = ExtResource("1_8lier")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5luc"]
+atlas = ExtResource("1_8lier")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6u42"]
+atlas = ExtResource("1_8lier")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqk6l"]
+atlas = ExtResource("1_8lier")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae2ug"]
+atlas = ExtResource("1_8lier")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvt7m"]
+atlas = ExtResource("1_8lier")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vccgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia5mc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmw4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_750ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oervh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2pi0")
+}],
+"loop": 1,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf1ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iesmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhpae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxcun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdlap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gotmt")
+}],
+"loop": 0,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am4oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5luc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6u42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqk6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae2ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvt7m")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6q45"]
+size = Vector2(12.75, 16.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 100.0
+
+[node name="Enemy_Vangard" type="CharacterBody2D" unique_id=1144637568]
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_fpmbw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1241861435]
+sprite_frames = SubResource("SpriteFrames_vccgk")
+animation = &"die"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=330076174]
+position = Vector2(-0.125, 0)
+shape = SubResource("RectangleShape2D_q6q45")
+
+[node name="VisionRange" type="Area2D" parent="." unique_id=1446576856]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange" unique_id=904471514]
+shape = SubResource("CircleShape2D_vccgk")
+
+[connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
+[connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]

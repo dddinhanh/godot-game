@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://b05cc5dl40pn4"]
+
+[ext_resource type="PackedScene" uid="uid://rnvu7ntfim8g" path="res://scenes/levels/tilemaps/map_village.tscn" id="1_fa7h8"]
+[ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_midas.tscn" id="2_fa7h8"]
+[ext_resource type="PackedScene" uid="uid://giigtn73do0l" path="res://scenes/entities/monsters/enemy_vangard/enemy_vangard.tscn" id="3_q6q45"]
+
+[sub_resource type="Curve2D" id="Curve2D_7dc41"]
+
+[node name="Prologue" type="Node2D" unique_id=1473443736]
+
+[node name="Map_Village" parent="." unique_id=976170634 instance=ExtResource("1_fa7h8")]
+
+[node name="Collisions_Environment" type="Node2D" parent="." unique_id=1023566576]
+
+[node name="Wall1" type="StaticBody2D" parent="Collisions_Environment" unique_id=895816683]
+
+[node name="TreeBlock" type="StaticBody2D" parent="Collisions_Environment" unique_id=2118157657]
+
+[node name="Entities" type="Node2D" parent="." unique_id=831946222]
+
+[node name="Enemies" type="Node2D" parent="Entities" unique_id=939737021]
+
+[node name="Enemy_Vangard" parent="Entities/Enemies" unique_id=1144637568 instance=ExtResource("3_q6q45")]
+position = Vector2(2595, 760)
+
+[node name="Enemy_Vangard2" parent="Entities/Enemies" unique_id=1666100275 instance=ExtResource("3_q6q45")]
+position = Vector2(2333, 1219)
+
+[node name="Enemy_Vangard3" parent="Entities/Enemies" unique_id=1927144782 instance=ExtResource("3_q6q45")]
+position = Vector2(2727, 1297)
+
+[node name="Enemy_Vangard4" parent="Entities/Enemies" unique_id=1044215358 instance=ExtResource("3_q6q45")]
+position = Vector2(2309, 728)
+
+[node name="Enemy_Vangard5" parent="Entities/Enemies" unique_id=1551325492 instance=ExtResource("3_q6q45")]
+position = Vector2(916, 2111)
+
+[node name="Enemy_Vangard6" parent="Entities/Enemies" unique_id=2028695720 instance=ExtResource("3_q6q45")]
+position = Vector2(127, 888)
+
+[node name="Enemy_Vangard7" parent="Entities/Enemies" unique_id=618212022 instance=ExtResource("3_q6q45")]
+position = Vector2(586, 881)
+
+[node name="Enemy_Vangard8" parent="Entities/Enemies" unique_id=47576744 instance=ExtResource("3_q6q45")]
+position = Vector2(214, 1585)
+
+[node name="NPCs" type="Node2D" parent="Entities" unique_id=1283079565]
+
+[node name="Amara" type="CharacterBody2D" parent="Entities/NPCs" unique_id=1820350763]
+
+[node name="Player" type="Node2D" parent="Entities" unique_id=1606059757]
+
+[node name="PlayerMidas" parent="Entities/Player" unique_id=642523412 instance=ExtResource("2_fa7h8")]
+position = Vector2(901, 1083)
+
+[node name="Path_Carriage" type="Path2D" parent="." unique_id=946095395]
+curve = SubResource("Curve2D_7dc41")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path_Carriage" unique_id=1352405300]
+
+[node name="Carriage" type="Node2D" parent="Path_Carriage/PathFollow2D" unique_id=1324854774]
+
+[node name="EventTriggers" type="Node2D" parent="." unique_id=2117975877]
+
+[node name="Trigger_Crowd" type="Area2D" parent="EventTriggers" unique_id=75905474]
+
+[node name="Trigger_Rescue" type="Area2D" parent="EventTriggers" unique_id=1125948495]
+
+[node name="Trigger_Escape" type="Area2D" parent="EventTriggers" unique_id=1773403911]
+
+[node name="UI_Canvas" type="CanvasLayer" parent="." unique_id=2026706366]
+
+[node name="IntroScroll" type="Control" parent="UI_Canvas" unique_id=474469110]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI_Canvas/IntroScroll" unique_id=1257623500]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Placeholder_VN" type="Panel" parent="UI_Canvas/IntroScroll" unique_id=899134742]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
