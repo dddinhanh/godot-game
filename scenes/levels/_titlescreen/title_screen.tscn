@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://x4ihr4pltlgk"]
+
+[ext_resource type="Script" uid="uid://rb5375axu2on" path="res://scenes/levels/_titlescreen/title_screen.gd" id="1_55it3"]
+
+[node name="TitleScreen" type="Control" unique_id=1054120308]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55it3")
+
+[node name="StartButton" type="Button" parent="." unique_id=62332244]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 241.0
+offset_right = 711.0
+offset_bottom = 326.0
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="." unique_id=505493072]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 354.0
+offset_right = 711.0
+offset_bottom = 439.0
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1553837045]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 165.0
+offset_right = 629.0
+offset_bottom = 203.0
+text = "August Snow"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

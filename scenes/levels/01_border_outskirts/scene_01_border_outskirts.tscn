@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://b05cc5dl40pn4"]
+
+[ext_resource type="PackedScene" uid="uid://rnvu7ntfim8g" path="res://scenes/levels/_tilemaps/map_border_outskirts.tscn" id="1_4qayu"]
+[ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_lilith.tscn" id="3_ld82e"]
+
+[sub_resource type="Curve2D" id="Curve2D_7dc41"]
+
+[node name="Map" type="Node2D" unique_id=1473443736]
+
+[node name="Border_Outskirts" parent="." unique_id=976170634 instance=ExtResource("1_4qayu")]
+
+[node name="Area2D" type="Area2D" parent="Border_Outskirts" unique_id=1638203875]
+
+[node name="Area2D2" type="Area2D" parent="Border_Outskirts" unique_id=1733081277]
+
+[node name="Area2D3" type="Area2D" parent="Border_Outskirts" unique_id=2096260090]
+
+[node name="Entities" type="Node2D" parent="." unique_id=831946222]
+
+[node name="Enemies" type="Node2D" parent="Entities" unique_id=939737021]
+
+[node name="NPCs" type="Node2D" parent="Entities" unique_id=1283079565]
+
+[node name="Amara" type="CharacterBody2D" parent="Entities/NPCs" unique_id=1820350763]
+
+[node name="Player" type="Node2D" parent="Entities" unique_id=1606059757]
+position = Vector2(-1, 0)
+
+[node name="PlayerLilith" parent="Entities/Player" unique_id=642523412 instance=ExtResource("3_ld82e")]
+position = Vector2(982, 1319)
+
+[node name="Path_Carriage" type="Path2D" parent="." unique_id=946095395]
+curve = SubResource("Curve2D_7dc41")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path_Carriage" unique_id=1352405300]
+
+[node name="Carriage" type="Node2D" parent="Path_Carriage/PathFollow2D" unique_id=1324854774]
+
+[node name="EventTriggers" type="Node2D" parent="." unique_id=2117975877]
+
+[node name="Trigger_Crowd" type="Area2D" parent="EventTriggers" unique_id=75905474]
+
+[node name="Trigger_Rescue" type="Area2D" parent="EventTriggers" unique_id=1125948495]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EventTriggers/Trigger_Rescue" unique_id=1195200730]
+
+[node name="Trigger_Escape" type="Area2D" parent="EventTriggers" unique_id=1773403911]
