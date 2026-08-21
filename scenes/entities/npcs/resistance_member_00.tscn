@@ -86,7 +86,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
-radius = 9.333334
+radius = 12.684199
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n8smm"]
 radius = 74.66965
@@ -108,6 +108,8 @@ position = Vector2(0, -9.333334)
 shape = SubResource("CircleShape2D_vccgk")
 
 [node name="Chat_Detection_Area" type="Area2D" parent="." unique_id=659915194]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Chat_Detection_Area" unique_id=835855126]
 position = Vector2(0, -18.666668)

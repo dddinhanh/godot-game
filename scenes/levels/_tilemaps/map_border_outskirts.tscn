@@ -3,8 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cbbi60v5yrftm" path="res://assets/sprites/environment/ground/Floors_Tiles.png" id="1_jukj8"]
 [ext_resource type="Texture2D" uid="uid://bolbowewhbh12" path="res://assets/sprites/environment/ground/Water_tiles.png" id="2_5k301"]
 [ext_resource type="Texture2D" uid="uid://b387eorw7hhgh" path="res://assets/sprites/environment/ground/Wall_Tiles.png" id="2_kk6nk"]
-[ext_resource type="PackedScene" uid="uid://cfh75hbdnn4br" path="res://scenes/levels/_houses/small_house.tscn" id="5_b6ixi"]
-[ext_resource type="PackedScene" uid="uid://bvsejlb2sjywb" path="res://scenes/levels/_houses/abandoned_hut.tscn" id="6_o6q80"]
+[ext_resource type="PackedScene" uid="uid://cfh75hbdnn4br" path="res://scenes/levels/_structures/houses/small_house.tscn" id="5_b6ixi"]
+[ext_resource type="PackedScene" uid="uid://bvsejlb2sjywb" path="res://scenes/levels/_structures/houses/abandoned_hut.tscn" id="6_o6q80"]
+[ext_resource type="PackedScene" uid="uid://b5yspki7qrie3" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_01.tscn" id="7_2ruge"]
+[ext_resource type="PackedScene" uid="uid://c7rhgi2gf02p7" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_02.tscn" id="8_uv6po"]
 [ext_resource type="PackedScene" uid="uid://crh5w1t1ed6lh" path="res://scenes/entities/plants/tree_1.tscn" id="9_b8hev"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jukj8"]
@@ -1188,19 +1190,64 @@ tile_set = SubResource("TileSet_n8smm")
 position = Vector2(-123, -223)
 
 [node name="SmallHouse" parent="Buildings" unique_id=1551210435 instance=ExtResource("5_b6ixi")]
-position = Vector2(348, -390)
+position = Vector2(303, -256)
 
 [node name="SmallHouse2" parent="Buildings" unique_id=378142091 instance=ExtResource("5_b6ixi")]
-position = Vector2(844, -563)
+position = Vector2(903, -294)
 
 [node name="SmallHouse3" parent="Buildings" unique_id=1268400167 instance=ExtResource("5_b6ixi")]
-position = Vector2(500, -822)
+position = Vector2(667, -289)
 
 [node name="SmallHouse4" parent="Buildings" unique_id=1367735496 instance=ExtResource("5_b6ixi")]
-position = Vector2(1247, 392)
+position = Vector2(915, 57)
 
 [node name="SmallHouse5" parent="Buildings" unique_id=963510429 instance=ExtResource("5_b6ixi")]
-position = Vector2(1377, -749)
+position = Vector2(587, 69)
+
+[node name="SmallHouse6" parent="Buildings" unique_id=228794599 instance=ExtResource("5_b6ixi")]
+position = Vector2(1174, -678)
+
+[node name="SmallHouse9" parent="Buildings" unique_id=548618863 instance=ExtResource("5_b6ixi")]
+position = Vector2(1489, -678)
+
+[node name="SmallHouse10" parent="Buildings" unique_id=587829946 instance=ExtResource("5_b6ixi")]
+position = Vector2(1185, 397)
+
+[node name="SmallHouse11" parent="Buildings" unique_id=775795254 instance=ExtResource("5_b6ixi")]
+position = Vector2(1515, 405)
+
+[node name="SmallHouse12" parent="Buildings" unique_id=1871577800 instance=ExtResource("5_b6ixi")]
+position = Vector2(467, 883)
+
+[node name="SmallHouse13" parent="Buildings" unique_id=836552050 instance=ExtResource("5_b6ixi")]
+position = Vector2(-137, 1077)
+
+[node name="SmallHouse14" parent="Buildings" unique_id=1343560538 instance=ExtResource("5_b6ixi")]
+position = Vector2(345, 1104)
+
+[node name="SmallHouse15" parent="Buildings" unique_id=1265517633 instance=ExtResource("5_b6ixi")]
+position = Vector2(-114, 827)
+
+[node name="SmallHouse16" parent="Buildings" unique_id=1824472001 instance=ExtResource("5_b6ixi")]
+position = Vector2(76, 675)
+
+[node name="SmallHouse17" parent="Buildings" unique_id=642327762 instance=ExtResource("5_b6ixi")]
+position = Vector2(-292, 610)
+
+[node name="SmallHouse18" parent="Buildings" unique_id=2060878305 instance=ExtResource("5_b6ixi")]
+position = Vector2(-543, 496)
+
+[node name="SmallHouse19" parent="Buildings" unique_id=1595477980 instance=ExtResource("5_b6ixi")]
+position = Vector2(923, 549)
+
+[node name="SmallHouse20" parent="Buildings" unique_id=937324011 instance=ExtResource("5_b6ixi")]
+position = Vector2(524, 359)
+
+[node name="SmallHouse7" parent="Buildings" unique_id=1247189198 instance=ExtResource("5_b6ixi")]
+position = Vector2(-602, -79)
+
+[node name="SmallHouse8" parent="Buildings" unique_id=177590374 instance=ExtResource("5_b6ixi")]
+position = Vector2(160, 213)
 
 [node name="Plants" type="Node2D" parent="." unique_id=595556764]
 
@@ -1260,6 +1307,14 @@ position = Vector2(800, -172)
 
 [node name="tree_19" parent="Plants" unique_id=1364266895 instance=ExtResource("9_b8hev")]
 position = Vector2(1024, -189)
+
+[node name="Decorations" type="Node2D" parent="." unique_id=134948647]
+
+[node name="Bonfire01" parent="Decorations" unique_id=1628686460 instance=ExtResource("7_2ruge")]
+position = Vector2(-535, 146)
+
+[node name="Bonfire02" parent="Decorations" unique_id=720271342 instance=ExtResource("8_uv6po")]
+position = Vector2(756, 639)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2112778505]
 

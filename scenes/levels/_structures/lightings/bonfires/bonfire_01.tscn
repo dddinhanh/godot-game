@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://b5yspki7qrie3"]
+
+[ext_resource type="Texture2D" uid="uid://dfwf7h66iwxsu" path="res://assets/sprites/environment/decorations/Bonfire_02-Sheet.png" id="1_nfut8"]
+[ext_resource type="Script" uid="uid://dn6h8tfnifwyt" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_01.gd" id="1_p8lly"]
+[ext_resource type="Texture2D" uid="uid://toihtj2brp5k" path="res://assets/sprites/environment/decorations/Fire_01-Sheet.png" id="2_p8lly"]
+[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/lightings/torches/torch_light_flicker.gd" id="4_yld2f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2idus"]
+atlas = ExtResource("1_nfut8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u26b"]
+atlas = ExtResource("1_nfut8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igswn"]
+atlas = ExtResource("1_nfut8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3myi"]
+atlas = ExtResource("1_nfut8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vccgk"]
+animations = [{
+"frames": [{
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_2idus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u26b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igswn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3myi")
+}],
+"loop": 1,
+"name": &"bonfire",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jto31"]
+atlas = ExtResource("2_p8lly")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnqo"]
+atlas = ExtResource("2_p8lly")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gac07"]
+atlas = ExtResource("2_p8lly")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwt5q"]
+atlas = ExtResource("2_p8lly")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8smm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jto31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfnqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gac07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwt5q")
+}],
+"loop": 1,
+"name": &"fire",
+"speed": 4.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_gsvpr"]
+offsets = PackedFloat32Array(0.08867925, 0.254717, 0.45849058, 0.68490565, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.86795956, 0.19009995, 1, 1, 0.5391853, 0, 1, 0.71484375, 0.32180098, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pa1ly"]
+gradient = SubResource("Gradient_gsvpr")
+width = 356
+height = 356
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dfn54"]
+
+[node name="Bonfire01" type="Node2D" unique_id=1628686460]
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+script = ExtResource("1_p8lly")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=827652649]
+sprite_frames = SubResource("SpriteFrames_vccgk")
+animation = &"bonfire"
+frame_progress = 0.6822881
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1206671244]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_n8smm")
+animation = &"fire"
+frame_progress = 0.3947556
+speed_scale = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1472175122]
+position = Vector2(1, -2.5)
+texture = SubResource("GradientTexture2D_pa1ly")
+script = ExtResource("4_yld2f")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1298603777]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=186724498]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_dfn54")

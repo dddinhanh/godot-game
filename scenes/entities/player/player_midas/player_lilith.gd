@@ -7,6 +7,7 @@ var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
 var hitbox_offset: Vector2
 var strength: int = 20
+var torch_on := false
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
@@ -98,3 +99,11 @@ func update_hitbox_offset() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attacking and body.name.begins_with("Enemy_Vangard"): 
 		body.take_damage(strength, position)
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("torch_toggle"):
+		torch_on = !torch_on
+		$TorchHolder/AnimatedSprite2D.visible = torch_on
+		$TorchHolder/Sprite2D.visible = torch_on
+		$TorchHolder/PointLight2D.enabled = torch_on

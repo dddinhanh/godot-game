@@ -1,6 +1,13 @@
 extends CharacterBody2D
 
-const speed = 50
+const SPEED = 50.0
+
+enum {
+	IDLE,
+	NEW_DIR,
+	MOVE
+}
+
 var current_state = IDLE
 
 var dir = Vector2.RIGHT
@@ -9,71 +16,117 @@ var start_pos
 var is_roaming = true
 var is_chatting = false
 
-
-
-var player
+var player = null
 var player_in_chat_zone = false
 
-enum {
-	IDLE,
-	NEW_DIR,
-	MOVE
-}
 
 func _ready() -> void:
 	randomize()
 	start_pos = position
-func _process(delta: float) -> void:
-		if current_state == 0 or current_state == 1:
+
+
+func _physics_process(_delta: float) -> void:
+
+	# -------------------------
+	# ANIMATION
+	# -------------------------
+	if current_state == IDLE or current_state == NEW_DIR:
+		$AnimatedSprite2D.play("idle_down")
+
+	elif current_state == MOVE and !is_chatting:
+		if dir == Vector2.RIGHT:
+			$AnimatedSprite2D.play("walk_right")
+
+		elif dir == Vector2.DOWN:
+			$AnimatedSprite2D.play("walk_down")
+
+		elif dir == Vector2.LEFT:
+			$AnimatedSprite2D.play("walk_right")
+			$AnimatedSprite2D.flip_h = true
+
+		elif dir == Vector2.UP:
 			$AnimatedSprite2D.play("idle_down")
-		elif current_state == 2 and !is_chatting:
-			if dir.x == 1:
-				$AnimatedSprite2D.play("walk_right")
-			if dir.y == 1:
-				$AnimatedSprite2D.play("walk_down")
-				
-		if is_roaming:
-			match current_state:
-				IDLE:
-					pass
-				NEW_DIR:
-					dir = choose([Vector2.RIGHT, Vector2.DOWN])
-				MOVE:
-					move(delta)
-					
-		if Input.is_action_just_pressed("chat"):
-			print("Chatting with npc")
-			$Dialogue.start()
-			is_roaming = false
-			is_chatting = true
-			$AnimatedSprite2D.play("idle_down")
-		
+
+
+	# -------------------------
+	# ROAMING / MOVEMENT
+	# -------------------------
+	if is_roaming and !is_chatting:
+
+		match current_state:
+
+			IDLE:
+				velocity = Vector2.ZERO
+
+			NEW_DIR:
+				dir = choose([
+					Vector2.RIGHT,
+					Vector2.LEFT,
+					Vector2.UP,
+					Vector2.DOWN
+				])
+
+				velocity = Vector2.ZERO
+
+			MOVE:
+				velocity = dir * SPEED
+				move_and_slide()
+
+	else:
+		velocity = Vector2.ZERO
+
+
+	# -------------------------
+	# CHAT
+	# -------------------------
+	if player_in_chat_zone \
+	and Input.is_action_just_pressed("chat") \
+	and !is_chatting:
+
+		print("Chatting with npc")
+
+		$Dialogue.start()
+
+		is_roaming = false
+		is_chatting = true
+		velocity = Vector2.ZERO
+
+		$AnimatedSprite2D.play("idle_down")
+
+
 func choose(array):
 	array.shuffle()
 	return array.front()
 
-func move(delta):
-	if !is_chatting:
-		position += dir * speed * delta
-	
-
-
 
 func _on_chat_detection_area_body_entered(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		player = body
 		player_in_chat_zone = true
 
+		print("Player entered chat zone")
+
 
 func _on_chat_detection_area_body_exited(body: Node2D) -> void:
-	if body.has_method("player"):
+	if body.is_in_group("player"):
+		player = null
 		player_in_chat_zone = false
+
+		print("Player exited chat zone")
 
 
 func _on_timer_timeout() -> void:
-	$Timer.wait_time = choose([0.5, 1, 1.5])
-	current_state = choose([IDLE, NEW_DIR, MOVE])
-	
+	$Timer.wait_time = choose([
+		0.5,
+		1.0,
+		1.5
+	])
+
+	current_state = choose([
+		IDLE,
+		NEW_DIR,
+		MOVE
+	])
 
 
 func _on_dialogue_dialogue_finished() -> void:

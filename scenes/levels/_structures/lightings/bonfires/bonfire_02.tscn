@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://c7rhgi2gf02p7"]
+
+[ext_resource type="Script" uid="uid://djklg8qm4ycmg" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_02.gd" id="1_dfn54"]
+[ext_resource type="Texture2D" uid="uid://dfwf7h66iwxsu" path="res://assets/sprites/environment/decorations/Bonfire_02-Sheet.png" id="2_771j0"]
+[ext_resource type="Texture2D" uid="uid://chrpjpve5j0fq" path="res://assets/sprites/environment/decorations/Smoke-Sheet.png" id="3_nspwb"]
+[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/lightings/torches/torch_light_flicker.gd" id="4_i5pte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80cs4"]
+atlas = ExtResource("2_771j0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuhj5"]
+atlas = ExtResource("2_771j0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60bhi"]
+atlas = ExtResource("2_771j0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnclq"]
+atlas = ExtResource("2_771j0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vccgk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80cs4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuhj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60bhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnclq")
+}],
+"loop": 1,
+"name": &"bonfire",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5a1p1"]
+atlas = ExtResource("3_nspwb")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6akqn"]
+atlas = ExtResource("3_nspwb")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3fcd"]
+atlas = ExtResource("3_nspwb")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keso6"]
+atlas = ExtResource("3_nspwb")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n8smm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a1p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6akqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3fcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keso6")
+}],
+"loop": 1,
+"name": &"smoke",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_r2fx2"]
+offsets = PackedFloat32Array(0.08113208, 0.15660377, 0.24716981, 0.31132075, 0.5490566)
+colors = PackedColorArray(0.8, 0.8, 0.8, 1, 1, 0.86795956, 0.19009995, 1, 1, 0.5391853, 0, 1, 0.71484375, 0.32180098, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tr5sp"]
+gradient = SubResource("Gradient_r2fx2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 18.0
+
+[node name="Bonfire02" type="Node2D" unique_id=720271342]
+script = ExtResource("1_dfn54")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=212120556]
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vccgk")
+animation = &"bonfire"
+frame_progress = 0.9175519
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=140806884]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_n8smm")
+animation = &"smoke"
+frame_progress = 0.73067164
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D2" unique_id=1956449493]
+position = Vector2(-0.25, 9)
+texture = SubResource("GradientTexture2D_tr5sp")
+script = ExtResource("4_i5pte")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=795659988]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1029527219]
+position = Vector2(1, -28)
+shape = SubResource("CircleShape2D_vccgk")

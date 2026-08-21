@@ -3,6 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://rnvu7ntfim8g" path="res://scenes/levels/_tilemaps/map_border_outskirts.tscn" id="1_gad7e"]
 [ext_resource type="PackedScene" uid="uid://dhs0g2ak4swx2" path="res://scenes/entities/npcs/resistance_member_00.tscn" id="2_045qs"]
 [ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_lilith.tscn" id="2_jpkt2"]
+[ext_resource type="Script" uid="uid://c88dy8oxmid54" path="res://scenes/levels/00_prologue/area_2d_1.gd" id="4_045qs"]
+[ext_resource type="Script" uid="uid://bw8h7iicrbmjh" path="res://scenes/levels/01_border_outskirts/torch_toggle_tutorial.gd" id="5_fdu87"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 128.09763
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ck3lr"]
+radius = 112.04017
 
 [node name="Prologue" type="Node2D" unique_id=147373810]
 
@@ -14,9 +22,59 @@ position = Vector2(1155, 1166)
 [node name="Player" type="Node2D" parent="." unique_id=862151895]
 
 [node name="PlayerLilith" parent="Player" unique_id=642523412 instance=ExtResource("2_jpkt2")]
-position = Vector2(979, 1093)
+position = Vector2(1734, 2274)
 
 [node name="NPCs" type="Node2D" parent="." unique_id=620364001]
 
 [node name="ResistanceMember00" parent="NPCs" unique_id=1381755577 instance=ExtResource("2_045qs")]
-position = Vector2(1226, 1142)
+position = Vector2(1905, 2302)
+
+[node name="Triggers" type="Node2D" parent="." unique_id=87467608]
+
+[node name="SceneTransition" type="Area2D" parent="Triggers" unique_id=2090577438]
+collision_mask = 2
+script = ExtResource("4_045qs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/SceneTransition" unique_id=2117770809]
+position = Vector2(2294, 1058)
+shape = SubResource("CircleShape2D_vccgk")
+
+[node name="Torch_Toggle_Tutorial" type="Area2D" parent="Triggers" unique_id=1661649507]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_fdu87")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Torch_Toggle_Tutorial" unique_id=1684498893]
+position = Vector2(1909, 1779)
+shape = SubResource("CircleShape2D_ck3lr")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1697445600]
+color = Color(0.52, 0.26866665, 0, 1)
+energy = 0.5
+blend_mode = 2
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1073273192]
+
+[node name="TorchTutorialLabel" type="RichTextLabel" parent="UI" unique_id=1909035140]
+visible = false
+offset_left = 400.0
+offset_top = 400.0
+offset_right = 800.0
+offset_bottom = 460.0
+scale = Vector2(2, 2)
+bbcode_enabled = true
+text = "[i][color=yellow]Click 'F' to Toggle the torch[/color][/i]"
+
+[node name="TimeSkipTutorialLabel" type="RichTextLabel" parent="UI" unique_id=221327345]
+visible = false
+offset_left = 400.0
+offset_top = 400.0
+offset_right = 800.0
+offset_bottom = 460.0
+bbcode_enabled = true
+text = "[i][color=yellow]Click 'Enter' to continue[/color][/i]"
+
+[connection signal="body_entered" from="Triggers/SceneTransition" to="Triggers/SceneTransition" method="_on_body_entered"]
+[connection signal="body_exited" from="Triggers/SceneTransition" to="Triggers/SceneTransition" method="_on_body_exited"]
+[connection signal="body_entered" from="Triggers/Torch_Toggle_Tutorial" to="Triggers/Torch_Toggle_Tutorial" method="_on_body_entered"]
+[connection signal="body_exited" from="Triggers/Torch_Toggle_Tutorial" to="Triggers/Torch_Toggle_Tutorial" method="_on_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn71lh683qomf"]
 
 [ext_resource type="Script" uid="uid://becxlgdabbohr" path="res://scenes/levels/00_prologue/intro_text_scene.gd" id="1_2cmgx"]
-[ext_resource type="Texture2D" uid="uid://6x5dnq7a1l7h" path="res://introduction_text.png" id="2_thbcp"]
+[ext_resource type="Texture2D" uid="uid://cbuhms40r1olf" path="res://assets/sprites/ui/introduction_scene_00.png" id="2_2cmgx"]
 [ext_resource type="PackedScene" uid="uid://bq52pvooxoj0o" path="res://scenes/levels/00_prologue/transition_screen_00.tscn" id="3_b1rdc"]
 
 [node name="Intro_Text" type="Node2D" unique_id=822552384]
@@ -10,8 +10,9 @@ script = ExtResource("1_2cmgx")
 [node name="IntroImage" type="Node2D" parent="." unique_id=342364003]
 
 [node name="Sprite2D" type="Sprite2D" parent="IntroImage" unique_id=1302041950]
-position = Vector2(577, 324)
-texture = ExtResource("2_thbcp")
+position = Vector2(580.5, 325.75003)
+scale = Vector2(0.6907894, 0.68278426)
+texture = ExtResource("2_2cmgx")
 
 [node name="Transition_Screen_00" parent="." unique_id=1516875676 instance=ExtResource("3_b1rdc")]
 
