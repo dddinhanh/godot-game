@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="unknown-gameproject-rpg"
+config/name="unknown-gameproject-rpg_BACKUP"
 run/main_scene="uid://rnvu7ntfim8g"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
