@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://v31kuc0rgkgw"]
+
+[ext_resource type="Script" uid="uid://b27u4fkkoiway" path="res://scenes/levels/01_border_outskirts/visual_novel_1_scene_01.gd" id="1_mueby"]
+[ext_resource type="Texture2D" uid="uid://3xpc2cyft6db" path="res://assets/sprites/ui/vn_1_scene_01.png" id="2_ftl8e"]
+
+[node name="Vnlayer1" type="Node2D" unique_id=1286302310]
+
+[node name="VisualNovel" type="CanvasLayer" parent="." unique_id=1614252219]
+script = ExtResource("1_mueby")
+
+[node name="ColorRect" type="ColorRect" parent="VisualNovel" unique_id=625075925]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VisualNovel/ColorRect" unique_id=794911988]
+layout_mode = 0
+offset_right = 2312.0
+offset_bottom = 1298.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ftl8e")
+
+[node name="Label" type="Label" parent="VisualNovel/ColorRect" unique_id=1920494975]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 582.0
+offset_right = 491.0
+offset_bottom = 605.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 1, 0.12941177, 1)
+text = "Ngày hôm qua nơi đây vẫn còn là nhà của họ. Vậy mà…"

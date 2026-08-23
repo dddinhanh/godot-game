@@ -151,12 +151,13 @@ animations = [{
 size = Vector2(12.75, 16.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
-radius = 100.0
+radius = 67.52268
 
 [node name="Enemy_Vangard" type="CharacterBody2D" unique_id=1144637568]
+position = Vector2(0, -33)
 scale = Vector2(4, 4)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 3
 script = ExtResource("1_fpmbw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1241861435]
@@ -169,6 +170,8 @@ position = Vector2(-0.125, 0)
 shape = SubResource("RectangleShape2D_q6q45")
 
 [node name="VisionRange" type="Area2D" parent="." unique_id=1446576856]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange" unique_id=904471514]
 shape = SubResource("CircleShape2D_vccgk")
