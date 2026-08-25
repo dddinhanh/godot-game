@@ -1,3 +1,16 @@
 [gd_scene format=3 uid="uid://cw8sbokryioed"]
 
+[ext_resource type="PackedScene" uid="uid://3lxer586gnvc" path="res://scenes/levels/_tilemaps/map_cold_forest.tscn" id="1_5fro6"]
+[ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_lilith.tscn" id="2_1xtwm"]
+
 [node name="SceneForest" type="Node2D" unique_id=1515655148]
+
+[node name="MapColdForest" parent="." unique_id=2130892502 instance=ExtResource("1_5fro6")]
+
+[node name="PlayerLilith" parent="." unique_id=642523412 instance=ExtResource("2_1xtwm")]
+position = Vector2(624, 1106)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=734421281]
+color = Color(0.12155651, 0.1690771, 0.47946167, 1)
+energy = 0.8
+blend_mode = 2
