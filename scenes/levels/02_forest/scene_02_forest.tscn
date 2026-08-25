@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://3lxer586gnvc" path="res://scenes/levels/_tilemaps/map_cold_forest.tscn" id="1_5fro6"]
 [ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_lilith.tscn" id="2_1xtwm"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 173.27724
+
 [node name="SceneForest" type="Node2D" unique_id=1515655148]
 
 [node name="MapColdForest" parent="." unique_id=2130892502 instance=ExtResource("1_5fro6")]
@@ -14,3 +17,9 @@ position = Vector2(624, 1106)
 color = Color(0.12155651, 0.1690771, 0.47946167, 1)
 energy = 0.8
 blend_mode = 2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=614356298]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=888978563]
+position = Vector2(2266, 0)
+shape = SubResource("CircleShape2D_vccgk")
