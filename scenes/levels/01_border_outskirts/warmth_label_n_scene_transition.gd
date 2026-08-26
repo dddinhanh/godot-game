@@ -1,6 +1,9 @@
 extends Area2D
 
-@onready var warmth_label = $"../../UI/WarmthLabel"
+@onready var warmth_label: RichTextLabel = $"../../UI/WarmthLabel"
+
+
+
 
 var triggered := false
 

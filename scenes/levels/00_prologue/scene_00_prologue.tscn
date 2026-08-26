@@ -48,22 +48,17 @@ script = ExtResource("5_fdu87")
 position = Vector2(1909, 1779)
 shape = SubResource("CircleShape2D_ck3lr")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1697445600]
-color = Color(0.52, 0.26866665, 0, 1)
-energy = 0.5
-blend_mode = 2
-
 [node name="UI" type="CanvasLayer" parent="." unique_id=1073273192]
 
 [node name="TorchTutorialLabel" type="RichTextLabel" parent="UI" unique_id=1909035140]
 visible = false
-offset_left = 400.0
-offset_top = 400.0
-offset_right = 800.0
-offset_bottom = 460.0
+offset_left = 488.0
+offset_top = 528.0
+offset_right = 888.0
+offset_bottom = 588.0
 scale = Vector2(2, 2)
 bbcode_enabled = true
-text = "[i][color=yellow]Click 'F' to Toggle the torch[/color][/i]"
+text = "[i][color=yellow]Click 'F' to Toggle the torch to [b]Keep Warm[/b][/color][/i]"
 
 [node name="TimeSkipTutorialLabel" type="RichTextLabel" parent="UI" unique_id=221327345]
 visible = false
@@ -73,6 +68,11 @@ offset_right = 800.0
 offset_bottom = 460.0
 bbcode_enabled = true
 text = "[i][color=yellow]Click 'Enter' to continue[/color][/i]"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="UI" unique_id=1697445600]
+color = Color(0.52, 0.26866665, 0, 1)
+energy = 0.5
+blend_mode = 2
 
 [connection signal="body_entered" from="Triggers/SceneTransition" to="Triggers/SceneTransition" method="_on_body_entered"]
 [connection signal="body_exited" from="Triggers/SceneTransition" to="Triggers/SceneTransition" method="_on_body_exited"]

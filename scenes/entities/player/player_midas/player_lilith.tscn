@@ -502,5 +502,31 @@ shape = SubResource("RectangleShape2D_vccgk")
 [node name="TorchHolder" parent="." unique_id=317370352 instance=ExtResource("5_ttq15")]
 position = Vector2(7.5, 7.5)
 
+[node name="PlayerHUD" type="CanvasLayer" parent="." unique_id=1165047504]
+
+[node name="BarsContainer" type="VBoxContainer" parent="PlayerHUD" unique_id=1364164139]
+offset_right = 408.0
+offset_bottom = 124.0
+
+[node name="HealthLabel" type="Label" parent="PlayerHUD/BarsContainer" unique_id=2031822447]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "HEALTH"
+
+[node name="HealthBar" type="ProgressBar" parent="PlayerHUD/BarsContainer" unique_id=788253316]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0, 0, 1)
+value = 100.0
+
+[node name="WarmthLabel" type="Label" parent="PlayerHUD/BarsContainer" unique_id=716441459]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6666667, 0, 1)
+text = "WARMTH"
+
+[node name="WarmthBar" type="ProgressBar" parent="PlayerHUD/BarsContainer" unique_id=1631873309]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6666667, 0, 1)
+value = 100.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

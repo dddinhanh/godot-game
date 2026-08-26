@@ -9,14 +9,52 @@ var hitbox_offset: Vector2
 var strength: int = 20
 var torch_on := false
 
+
+#
+# HEALTH AND WARMTH
+@export var max_health: float = 100.0
+@export var max_warmth: float = 100.0
+
+@export var warmth_loss_rate: float = 7.0
+@export var torch_warmth_rate: float = 0.5
+@export var shelter_warmth_rate: float = 7.5
+@export var freezing_damage_rate: float = 10.0
+
+var health: float = 100.0
+var warmth: float = 100.0
+var is_inside_shelter: bool = false
+var is_dead: bool = false
+#
+
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Hitbox
+
+
+#
+@onready var health_bar: ProgressBar = \
+	$PlayerHUD/BarsContainer/HealthBar
+
+@onready var warmth_bar: ProgressBar = \
+	$PlayerHUD/BarsContainer/WarmthBar
+#
 
 
 func _ready() -> void:
 	
 	# Initialize hitbox offset:
 	hitbox_offset = hitbox.position
+	
+	# Updated
+	health = max_health
+	warmth = max_warmth
+
+	health_bar.max_value = max_health
+	health_bar.value = health
+
+	warmth_bar.max_value = max_warmth
+	warmth_bar.value = warmth
+	#
 
 func _physics_process(_delta: float) -> void:
 	# Disable hitbox until an attack is triggered
@@ -107,3 +145,76 @@ func _unhandled_input(event):
 		$TorchHolder/AnimatedSprite2D.visible = torch_on
 		$TorchHolder/Sprite2D.visible = torch_on
 		$TorchHolder/PointLight2D.enabled = torch_on
+		
+		
+func _process(delta: float) -> void:
+	if is_dead:
+		return
+
+	process_warmth(delta)
+	update_status_bars()
+	
+func process_warmth(delta: float) -> void:
+	# Fire hoặc shelter luôn hồi Warmth nhanh nhất.
+	if is_inside_shelter:
+		warmth += shelter_warmth_rate * delta
+
+	# Bật torch: Warmth ổn định hoặc hồi rất chậm.
+	elif torch_on:
+		warmth += torch_warmth_rate * delta
+
+	# Tắt torch: Warmth giảm.
+	else:
+		warmth -= warmth_loss_rate * delta
+
+	warmth = clamp(warmth, 0.0, max_warmth)
+
+	# Chỉ khi Warmth chạm đáy thì Health mới giảm.
+	if warmth <= 0.0:
+		health -= freezing_damage_rate * delta
+		health = clamp(health, 0.0, max_health)
+
+		if health <= 0.0:
+			die()
+
+func update_status_bars() -> void:
+	health_bar.value = health
+	warmth_bar.value = warmth
+	
+	
+func take_damage(damage: float) -> void:
+	if is_dead:
+		return
+
+	health -= damage
+	health = clamp(health, 0.0, max_health)
+
+	print("PLAYER HEALTH: ", health)
+	update_status_bars()
+
+	if health <= 0.0:
+		die()
+		
+
+func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	health = 0.0
+	velocity = Vector2.ZERO
+	update_status_bars()
+
+	print("PLAYER DIED")
+
+	set_physics_process(false)
+
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
+	
+	
+	
+func set_inside_shelter(value: bool) -> void:
+	is_inside_shelter = value
+	
+	

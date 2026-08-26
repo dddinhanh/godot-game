@@ -1,15 +1,13 @@
 extends PointLight2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	flicker()
+var flicker_timer := 0.0
 
 
-func flicker() -> void:
-	energy = randf() * 0.1 + 0.9
-	scale = Vector2(1, 1) * energy
-	await get_tree().create_timer(0.1333).timeout
-	flicker()
-	
-	pass
+func _process(delta: float) -> void:
+	flicker_timer += delta
+
+	if flicker_timer >= 0.1333:
+		flicker_timer = 0.0
+
+		energy = randf_range(0.9, 1.0)
+		scale = Vector2.ONE * energy
