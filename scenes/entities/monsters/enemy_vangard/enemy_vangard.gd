@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED: int = 150
+const SPEED: int = 120
 const KNOCKBACK_FORCE: int = 100
 
 # Enemy attack lên player
@@ -34,7 +34,18 @@ func _physics_process(delta: float) -> void:
 	# Kiểm tra lại target mỗi physics frame.
 	# Nhờ vậy bật/tắt F ngay trong vùng ngoài sẽ có hiệu lực tức thì.
 	update_target()
-
+	
+	# Debug terminal
+	if is_instance_valid(player_in_torch_range):
+		print(
+			"OUTER | TORCH: ",
+			player_in_torch_range.get("torch_on"),
+			" | STEALTH: ",
+			player_in_torch_range.is_in_stealth_mode(),
+			" | DETECTED: ",
+			target != null
+		)
+	
 	if target:
 		_attack(delta)
 		try_damage_player()
@@ -43,20 +54,35 @@ func _physics_process(delta: float) -> void:
 
 
 func update_target() -> void:
-	# Ưu tiên vùng trong.
-	# Dù torch ON hay OFF, player vẫn bị đuổi.
+	# Vùng trong:
+	# Luôn phát hiện player, bất kể torch và stealth.
 	if is_instance_valid(player_in_inner_range):
 		target = player_in_inner_range
 		return
 
-	# Vùng ngoài chỉ phát hiện player khi torch đang bật.
+	# Vùng ngoài:
+	# Chỉ an toàn khi torch OFF và stealth ON.
 	if is_instance_valid(player_in_torch_range):
-		var player_torch_on = player_in_torch_range.get("torch_on")
+		var player_torch_on: bool = false
+		var player_is_stealthing: bool = false
 
-		if player_torch_on == true:
+		# Đọc trạng thái torch hiện tại.
+		player_torch_on = player_in_torch_range.get("torch_on")
+
+		# Đọc trạng thái stealth hiện tại.
+		if player_in_torch_range.has_method(
+			"is_in_stealth_mode"
+		):
+			player_is_stealthing = \
+				player_in_torch_range.is_in_stealth_mode()
+
+		# Phát hiện nếu player bật torch
+		# HOẶC không sử dụng stealth.
+		if player_torch_on or not player_is_stealthing:
 			target = player_in_torch_range
 			return
 
+	# Không đáp ứng điều kiện phát hiện.
 	target = null
 
 

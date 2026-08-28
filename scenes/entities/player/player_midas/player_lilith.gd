@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 
 const SPEED = 250.0
+const STEALTH_SPEED = 100.0
 
 var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
 var hitbox_offset: Vector2
 var strength: int = 20
 var torch_on := false
+var is_stealthing := false
 
 
 #
@@ -75,12 +77,26 @@ func _physics_process(_delta: float) -> void:
 
 # MOVEMENT
 func process_movement() -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_vector("left", "right", "up", "down")
-	
+	var direction := Input.get_vector(
+		"left",
+		"right",
+		"up",
+		"down"
+	)
+
+	# Stealth chỉ hoạt động trong lúc giữ phím.
+	is_stealthing = (
+	Input.is_action_pressed("stealth")
+	and not torch_on
+)
+
+	var current_speed := SPEED
+
+	if is_stealthing:
+		current_speed = STEALTH_SPEED
+
 	if direction != Vector2.ZERO:
-		velocity = direction * SPEED
+		velocity = direction * current_speed
 		last_direction = direction
 		update_hitbox_offset()
 	else:
@@ -217,4 +233,6 @@ func die() -> void:
 func set_inside_shelter(value: bool) -> void:
 	is_inside_shelter = value
 	
-	
+
+func is_in_stealth_mode() -> bool:
+	return is_stealthing
