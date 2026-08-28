@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://denmvyeyrg4m0" path="res://assets/sprites/characters/player/Character_Slash.png" id="2_ttq15"]
 [ext_resource type="Texture2D" uid="uid://j7esbwcuxtm6" path="res://assets/sprites/characters/player/Character_Idle.png" id="3_ovawq"]
 [ext_resource type="Texture2D" uid="uid://c5cif3wk4wrko" path="res://assets/sprites/characters/player/Character_Walk.png" id="4_fwum3"]
-[ext_resource type="PackedScene" uid="uid://bkwilj62n864t" path="res://scenes/levels/_structures/lightings/torches/torch_holder.tscn" id="5_ttq15"]
+[ext_resource type="PackedScene" uid="uid://bkwilj62n864t" path="res://scenes/levels/_structures/decorations/torches/torch_holder.tscn" id="5_ttq15"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2i62e"]
 atlas = ExtResource("2_ttq15")

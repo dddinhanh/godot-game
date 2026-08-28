@@ -33,15 +33,13 @@ position = Vector2(2081, 1064)
 
 [node name="Triggers" type="Node2D" parent="." unique_id=1351404626]
 
-[node name="VNTrigger" type="Node2D" parent="Triggers" unique_id=2117975877]
-
-[node name="Area2D" type="Area2D" parent="Triggers/VNTrigger" unique_id=701515529]
+[node name="VNTrigger" type="Area2D" parent="Triggers" unique_id=701515529]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_4qayu")
 visual_novel_scene = ExtResource("4_dqu63")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/VNTrigger/Area2D" unique_id=1791910433]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/VNTrigger" unique_id=1791910433]
 position = Vector2(1476, 1084)
 shape = SubResource("CircleShape2D_n8smm")
 
@@ -71,4 +69,5 @@ color = Color(0.17865634, 0.22766918, 0.1970706, 1)
 energy = 0.8
 blend_mode = 2
 
+[connection signal="body_entered" from="Triggers/VNTrigger" to="Triggers/VNTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Triggers/WarmthLabel&SceneTransition" to="Triggers/WarmthLabel&SceneTransition" method="_on_body_entered"]

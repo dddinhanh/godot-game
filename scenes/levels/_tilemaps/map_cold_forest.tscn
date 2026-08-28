@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cbbi60v5yrftm" path="res://assets/sprites/environment/ground/Floors_Tiles.png" id="1_6w1kg"]
 [ext_resource type="PackedScene" uid="uid://yblvj30j3lry" path="res://scenes/entities/plants/pinetree_01.tscn" id="2_qs5ls"]
-[ext_resource type="PackedScene" uid="uid://b5yspki7qrie3" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_01.tscn" id="3_s4wkl"]
+[ext_resource type="PackedScene" uid="uid://b5yspki7qrie3" path="res://scenes/levels/_structures/decorations/bonfires/bonfire_01.tscn" id="3_s4wkl"]
+[ext_resource type="PackedScene" uid="uid://4pumh4o060ot" path="res://scenes/levels/_structures/decorations/accidents/accident_scene_02.tscn" id="4_3bi5h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qs5ls"]
 texture = ExtResource("1_6w1kg")
@@ -813,16 +814,16 @@ position = Vector2(2368, 361)
 position = Vector2(2375, 470)
 
 [node name="Pinetree82" parent="Plants" unique_id=1111556655 instance=ExtResource("2_qs5ls")]
-position = Vector2(2376, 598)
+position = Vector2(2551, 378)
 
 [node name="Pinetree83" parent="Plants" unique_id=533007070 instance=ExtResource("2_qs5ls")]
-position = Vector2(2373, 709)
+position = Vector2(2540, 707)
 
 [node name="Pinetree84" parent="Plants" unique_id=1036294330 instance=ExtResource("2_qs5ls")]
-position = Vector2(2371, 808)
+position = Vector2(2548, 823)
 
 [node name="Pinetree85" parent="Plants" unique_id=1127363829 instance=ExtResource("2_qs5ls")]
-position = Vector2(2384, 926)
+position = Vector2(2551, 929)
 
 [node name="Pinetree86" parent="Plants" unique_id=300135083 instance=ExtResource("2_qs5ls")]
 position = Vector2(2381, 1039)
@@ -865,8 +866,10 @@ position = Vector2(2554, 532)
 [node name="Bonfire01" parent="Decorations" unique_id=1628686460 instance=ExtResource("3_s4wkl")]
 position = Vector2(425, 594)
 
+[node name="AccidentScene02" parent="Decorations" unique_id=220449176 instance=ExtResource("4_3bi5h")]
+position = Vector2(2423, 789)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1565552141]
-visible = false
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2027377925]
 position = Vector2(1053.0001, 813.4197)
@@ -881,7 +884,7 @@ polygon = PackedVector2Array(-436.06018, -829.5707, -370.53198, 914.6017, -271.6
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2076903914]
 position = Vector2(1585, 1372)
 scale = Vector2(0.7689568, 0.33481887)
-polygon = PackedVector2Array(-399.2422, 265.81543, -940.23486, 259.8418, -938.93445, -218.02832, -2067.7363, -212.05493, -370.53198, 914.6017, -271.64404, 914.6017, 1222.4355, -674.99194, 1058.5771, -952.7539, 958.4414, -4115.6577, 963.6433, -979.63403, 756.8696, -976.64746, 236.68433, -970.6741, 232.78296, 256.85547, -288.70276, 253.86865)
+polygon = PackedVector2Array(-399.2422, 265.81543, -940.23486, 259.8418, -938.93445, -218.02832, -2067.7363, -212.05493, -370.53198, 914.6017, -271.64404, 914.6017, 1222.4355, -674.99194, 1058.5771, -952.7539, 1122.2998, -1323.1035, 1165.2151, -1361.9304, 1205.5295, -1568.012, 1215.9331, -2099.6426, 1206.8298, -2505.8325, 958.4414, -4115.6577, 967.5447, -2691.007, 1084.5864, -2691.007, 1149.6096, -2646.2068, 1189.9238, -2443.1118, 1191.2244, -1950.3081, 1187.323, -1630.7324, 1143.1072, -1424.6509, 990.9529, -1117.0217, 963.6433, -979.63403, 756.8696, -976.64746, 236.68433, -970.6741, 232.78296, 256.85547, -288.70276, 253.86865)
 
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=970611923]
 position = Vector2(1630.8002, 256.99997)
