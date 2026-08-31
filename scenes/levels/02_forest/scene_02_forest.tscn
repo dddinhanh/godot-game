@@ -1,3 +1,117 @@
 [gd_scene format=3 uid="uid://cw8sbokryioed"]
 
+[ext_resource type="PackedScene" uid="uid://3lxer586gnvc" path="res://scenes/levels/_tilemaps/map_cold_forest.tscn" id="1_5fro6"]
+[ext_resource type="PackedScene" uid="uid://cdle5i1l2yot" path="res://scenes/entities/player/player_midas/player_lilith.tscn" id="2_1xtwm"]
+[ext_resource type="PackedScene" uid="uid://giigtn73do0l" path="res://scenes/entities/monsters/enemy_vangard/enemy_vangard.tscn" id="2_ct2po"]
+[ext_resource type="Script" uid="uid://bp07ko46sru5y" path="res://scenes/levels/02_forest/warmth_label_trigger.gd" id="4_ct2po"]
+[ext_resource type="Script" uid="uid://brg6v57ja61pp" path="res://scenes/levels/02_forest/scene_transition.gd" id="4_yocyp"]
+[ext_resource type="Script" uid="uid://borx8hx2vbdt8" path="res://scenes/levels/02_forest/stealth_tutorial.gd" id="6_lgcf6"]
+[ext_resource type="Script" uid="uid://bqh7o32vv5i2x" path="res://scenes/levels/02_forest/vn_trigger_2_scene_02.gd" id="7_38cll"]
+[ext_resource type="PackedScene" uid="uid://cp1e35nsl2g18" path="res://scenes/levels/02_forest/vnlayer_2_scene_02.tscn" id="8_i0age"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 173.27724
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ct2po"]
+radius = 153.20901
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8smm"]
+radius = 164.04877
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw05t"]
+size = Vector2(293, 370)
+
 [node name="SceneForest" type="Node2D" unique_id=1515655148]
+
+[node name="Map" type="Node2D" parent="." unique_id=394448429]
+
+[node name="MapColdForest" parent="Map" unique_id=2130892502 instance=ExtResource("1_5fro6")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=1934645361]
+
+[node name="Enemies" type="Node2D" parent="Entities" unique_id=930752667]
+
+[node name="Enemy_Vangard" parent="Entities/Enemies" unique_id=1144637568 instance=ExtResource("2_ct2po")]
+position = Vector2(1764, 701)
+
+[node name="Player" type="Node2D" parent="Entities" unique_id=1917253565]
+
+[node name="PlayerLilith" parent="Entities/Player" unique_id=642523412 instance=ExtResource("2_1xtwm")]
+position = Vector2(618, 1114)
+shelter_warmth_rate = 35.0
+
+[node name="Triggers" type="Node2D" parent="." unique_id=1250707634]
+
+[node name="SceneTransition" type="Area2D" parent="Triggers" unique_id=614356298]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_yocyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/SceneTransition" unique_id=888978563]
+position = Vector2(2266, 0)
+shape = SubResource("CircleShape2D_vccgk")
+
+[node name="Warmth_Label_Trigger" type="Area2D" parent="Triggers" unique_id=173032940]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_ct2po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Warmth_Label_Trigger" unique_id=1008616935]
+position = Vector2(430, 597)
+shape = SubResource("CircleShape2D_ct2po")
+
+[node name="StealthTutorial" type="Area2D" parent="Triggers" unique_id=1127857855]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("6_lgcf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/StealthTutorial" unique_id=989704005]
+position = Vector2(1412, 449)
+shape = SubResource("CircleShape2D_n8smm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Triggers/StealthTutorial" unique_id=905835551]
+position = Vector2(1712, 1131)
+shape = SubResource("CircleShape2D_n8smm")
+
+[node name="VNAccidentTrigger" type="Area2D" parent="Triggers" unique_id=1895607153]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_38cll")
+visual_novel_scene = ExtResource("8_i0age")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/VNAccidentTrigger" unique_id=79533603]
+position = Vector2(2343.5, 665)
+shape = SubResource("RectangleShape2D_rw05t")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=903947802]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="UI" unique_id=734421281]
+color = Color(0.12155651, 0.1690771, 0.47946167, 1)
+energy = 0.8
+blend_mode = 2
+
+[node name="WarmthLabel" type="RichTextLabel" parent="UI" unique_id=636460732]
+visible = false
+offset_left = 712.0
+offset_top = 530.0
+offset_right = 1112.0
+offset_bottom = 590.0
+scale = Vector2(2, 2)
+bbcode_enabled = true
+text = "[b][color=orange]WARMTH RESTORED[/color][/b]"
+
+[node name="StealthTutorialLabel" type="RichTextLabel" parent="UI" unique_id=448071903]
+visible = false
+offset_left = 530.0
+offset_top = 534.0
+offset_right = 841.5
+offset_bottom = 591.0
+scale = Vector2(2, 2)
+bbcode_enabled = true
+text = "[i][color=yellow]Hold [b]Shift[/b] to trigger Stealth movement[/color][/i]"
+
+[connection signal="body_entered" from="Triggers/SceneTransition" to="Triggers/SceneTransition" method="_on_body_entered"]
+[connection signal="body_entered" from="Triggers/Warmth_Label_Trigger" to="Triggers/Warmth_Label_Trigger" method="_on_body_entered"]
+[connection signal="body_exited" from="Triggers/Warmth_Label_Trigger" to="Triggers/Warmth_Label_Trigger" method="_on_body_exited"]
+[connection signal="body_entered" from="Triggers/StealthTutorial" to="Triggers/StealthTutorial" method="_on_body_entered"]
+[connection signal="body_exited" from="Triggers/StealthTutorial" to="Triggers/StealthTutorial" method="_on_body_exited"]

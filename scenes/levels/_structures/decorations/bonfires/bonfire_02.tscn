@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c7rhgi2gf02p7"]
 
-[ext_resource type="Script" uid="uid://djklg8qm4ycmg" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_02.gd" id="1_dfn54"]
+[ext_resource type="Script" uid="uid://djklg8qm4ycmg" path="res://scenes/levels/_structures/decorations/bonfires/bonfire_02.gd" id="1_dfn54"]
 [ext_resource type="Texture2D" uid="uid://dfwf7h66iwxsu" path="res://assets/sprites/environment/decorations/Bonfire_02-Sheet.png" id="2_771j0"]
 [ext_resource type="Texture2D" uid="uid://chrpjpve5j0fq" path="res://assets/sprites/environment/decorations/Smoke-Sheet.png" id="3_nspwb"]
-[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/lightings/torches/torch_light_flicker.gd" id="4_i5pte"]
+[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/decorations/torches/torch_light_flicker.gd" id="4_i5pte"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80cs4"]
 atlas = ExtResource("2_771j0")

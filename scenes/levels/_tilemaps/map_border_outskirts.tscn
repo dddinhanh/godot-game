@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b387eorw7hhgh" path="res://assets/sprites/environment/ground/Wall_Tiles.png" id="2_kk6nk"]
 [ext_resource type="PackedScene" uid="uid://cfh75hbdnn4br" path="res://scenes/levels/_structures/houses/small_house.tscn" id="5_b6ixi"]
 [ext_resource type="PackedScene" uid="uid://bvsejlb2sjywb" path="res://scenes/levels/_structures/houses/abandoned_hut.tscn" id="6_o6q80"]
-[ext_resource type="PackedScene" uid="uid://b5yspki7qrie3" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_01.tscn" id="7_2ruge"]
-[ext_resource type="PackedScene" uid="uid://c7rhgi2gf02p7" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_02.tscn" id="8_uv6po"]
+[ext_resource type="PackedScene" uid="uid://b5yspki7qrie3" path="res://scenes/levels/_structures/decorations/bonfires/bonfire_01.tscn" id="7_2ruge"]
+[ext_resource type="PackedScene" uid="uid://c7rhgi2gf02p7" path="res://scenes/levels/_structures/decorations/bonfires/bonfire_02.tscn" id="8_uv6po"]
 [ext_resource type="PackedScene" uid="uid://crh5w1t1ed6lh" path="res://scenes/entities/plants/tree_1.tscn" id="9_b8hev"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jukj8"]

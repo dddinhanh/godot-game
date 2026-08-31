@@ -3,7 +3,11 @@ extends Area2D
 
 @export var visual_novel_scene: PackedScene
 
-var triggered: bool = false
+var triggered := false
+
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -17,13 +21,12 @@ func _on_body_entered(body: Node2D) -> void:
 
 	if visual_novel_scene == null:
 		push_error(
-			"VNTrigger chưa được gán Visual Novel Scene."
+			"VNAccidentTrigger chưa được gán Visual Novel Scene."
 		)
 		return
 
 	print("PLAYER DETECTED")
-
 	triggered = true
 
-	var vn: Node = visual_novel_scene.instantiate()
+	var vn := visual_novel_scene.instantiate()
 	get_tree().current_scene.add_child(vn)

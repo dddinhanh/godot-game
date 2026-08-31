@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b5yspki7qrie3"]
 
 [ext_resource type="Texture2D" uid="uid://dfwf7h66iwxsu" path="res://assets/sprites/environment/decorations/Bonfire_02-Sheet.png" id="1_nfut8"]
-[ext_resource type="Script" uid="uid://dn6h8tfnifwyt" path="res://scenes/levels/_structures/lightings/bonfires/bonfire_01.gd" id="1_p8lly"]
+[ext_resource type="Script" uid="uid://dn6h8tfnifwyt" path="res://scenes/levels/_structures/decorations/bonfires/bonfire_01.gd" id="1_p8lly"]
 [ext_resource type="Texture2D" uid="uid://toihtj2brp5k" path="res://assets/sprites/environment/decorations/Fire_01-Sheet.png" id="2_p8lly"]
-[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/lightings/torches/torch_light_flicker.gd" id="4_yld2f"]
+[ext_resource type="Script" uid="uid://bafsoe5tll77a" path="res://scenes/levels/_structures/decorations/torches/torch_light_flicker.gd" id="4_yld2f"]
+[ext_resource type="Script" uid="uid://cg40dk4wx6v7g" path="res://scenes/levels/_structures/decorations/bonfires/warmth_area.gd" id="5_pa1ly"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2idus"]
 atlas = ExtResource("1_nfut8")
@@ -91,6 +92,9 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dfn54"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
+radius = 73.0
+
 [node name="Bonfire01" type="Node2D" unique_id=1628686460]
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
@@ -119,3 +123,11 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=186724498]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_dfn54")
+
+[node name="WarmthArea" type="Area2D" parent="." unique_id=175884527]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_pa1ly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarmthArea" unique_id=1178039453]
+shape = SubResource("CircleShape2D_vccgk")

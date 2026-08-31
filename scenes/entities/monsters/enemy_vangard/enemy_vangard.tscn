@@ -151,7 +151,10 @@ animations = [{
 size = Vector2(12.75, 16.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vccgk"]
-radius = 67.52268
+radius = 29.55186
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n8smm"]
+radius = 89.753136
 
 [node name="Enemy_Vangard" type="CharacterBody2D" unique_id=1144637568]
 position = Vector2(0, -33)
@@ -176,5 +179,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionRange" unique_id=904471514]
 shape = SubResource("CircleShape2D_vccgk")
 
+[node name="TorchDetectionRange" type="Area2D" parent="." unique_id=802530129]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TorchDetectionRange" unique_id=1468343200]
+shape = SubResource("CircleShape2D_n8smm")
+
 [connection signal="body_entered" from="VisionRange" to="." method="_on_vision_range_body_entered"]
 [connection signal="body_exited" from="VisionRange" to="." method="_on_vision_range_body_exited"]
+[connection signal="body_entered" from="TorchDetectionRange" to="." method="_on_torch_detection_range_body_entered"]
+[connection signal="body_exited" from="TorchDetectionRange" to="." method="_on_torch_detection_range_body_exited"]
